@@ -1,4 +1,10 @@
+from aocd import get_data, submit
+import os
+import browser_cookie3 
 
+os.environ.get('AOC_SESSION')
+browser_cookie3.load('adventofcode.com')
+data = get_data(day=1, year=2022)
 
 # split input up into arrays by blank lines
 # for each array, add all values together
@@ -8,9 +14,9 @@
 
 class handleinput:
 
-    def formatinput():
-        input = open("C:/Users/Austin/OneDrive/MyCodingProjects/Python_Projects/Web Scrapers/djangowebscraper/input.txt", "r").read()
-        elfinventorylist = input.split("\n\n")
+    def formatinput(data):
+        # input = open("C:/Users/Austin/OneDrive/MyCodingProjects/Python_Projects/Web Scrapers/djangowebscraper/input.txt", "r").read()
+        elfinventorylist = data.split("\n\n")
         elfinventorylist = [x.split() for x in elfinventorylist]
         return elfinventorylist
             
@@ -26,10 +32,12 @@ class handleinput:
         maxelftotal = max(elftotals)
         return maxelftotal
     
-def main():
-    elfinventorylist = handleinput.formatinput()
+def outputmax():
+    elfinventorylist = handleinput.formatinput(data)
     elftotals = handleinput.sumelfinventories(elfinventorylist)
     maxelftotal = handleinput.findmaxelftotal(elftotals)
-    print("\n", maxelftotal)
+    return maxelftotal
 
-main()
+outputmax()
+
+submit(outputmax(), part="a", day=1, year=2022)
