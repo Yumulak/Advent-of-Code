@@ -3,7 +3,7 @@ import os
 import browser_cookie3 
 
 os.environ.get('AOC_SESSION')
-browser_cookie3.load('adventofcode.com')
+# browser_cookie3.load('adventofcode.com')
 data = get_data(day=1, year=2022)
 
 # split input up into arrays by blank lines
